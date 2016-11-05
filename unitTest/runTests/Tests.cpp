@@ -102,3 +102,18 @@ TEST(BasicOperations, Saturation) {
     s.Run(10);
     ASSERT_NEAR(I3->OutputPort->Value(0,0), 1.0, 0.005);
 }
+
+TEST(FirstPrinciple, DeltaTorque2omega) {
+    using namespace dissim;
+    Simulation s;
+    Block::Block_ptr dTO(new FirstPrinciple::DeltaTorque2omega);
+    s.SystemBlocks.push_back(dTO);
+
+    dTO->RescaleInputsMatrix(1,1);
+    dTO->getInputPort("T_d")->Value << 10;
+    dTO->getInputPort("T_n")->Value << 9;
+    dTO->getInputPort("J")->Value << 2;
+
+    s.Run(10);
+    ASSERT_NEAR(dTO->getOutputPort("omega")->Value(0,0), 5, 0.05);
+}
