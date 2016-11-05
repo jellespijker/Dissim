@@ -1,8 +1,8 @@
 #pragma once
 
-#include "Core/SystemBlock.h"
-#include "Core/Saturation.h"
-#include "Core/AlgabraicLoop.h"
+#include "../../Core/SystemBlock.h"
+#include "../../Core/Saturation.h"
+#include "../../Core/AlgabraicLoop.h"
 
 namespace dissim {
 namespace Components {
