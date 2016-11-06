@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Core/Block.h"
+#include "Block.h"
 
 namespace dissim {
 

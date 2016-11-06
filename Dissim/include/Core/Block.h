@@ -13,7 +13,7 @@
 #include "DissimType.h"
 #include "BlockException.h"
 #include "Chronos.h"
-#include "Math/Math.h"
+#include "../Math/Math.h"
 
 namespace dissim {
 

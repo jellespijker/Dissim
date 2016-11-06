@@ -23,7 +23,6 @@ set(DISSIM_LIB_SRC 	 ${PROJECT_INCLUDE_DIR}/dissim.h
 
         ${PROJECT_INCLUDE_DIR}/Math/Math.h
         ${PROJECT_INCLUDE_DIR}/Math/Common.h
-        ${PROJECT_INCLUDE_DIR}/Math/DissimConstants.h
 
         ${PROJECT_INCLUDE_DIR}/Components/Components.h
         ${PROJECT_INCLUDE_DIR}/Components/Motor/ElectroMotor.h
