@@ -28,6 +28,7 @@ set(DISSIM_LIB_SRC 	 ${PROJECT_INCLUDE_DIR}/dissim.h
         ${PROJECT_INCLUDE_DIR}/Components/Motor/ElectroMotor.h
         ${PROJECT_INCLUDE_DIR}/Components/Motor/HydraulicMotor.h
         ${PROJECT_INCLUDE_DIR}/Components/Pump/HydraulicPump.h
+        ${PROJECT_INCLUDE_DIR}/Components/Math/K_HP.h
 
         ${PROJECT_INCLUDE_DIR}/FirstPrinciple/FirstPrinciple.h
         ${PROJECT_INCLUDE_DIR}/FirstPrinciple/DeltaTorque2omega.h
@@ -47,6 +48,7 @@ set(DISSIM_LIB_SRC 	 ${PROJECT_INCLUDE_DIR}/dissim.h
         ${PROJECT_SOURCE_DIR}/Components/Motor/ElectroMotor.cpp
         ${PROJECT_SOURCE_DIR}/Components/Motor/HydraulicMotor.cpp
         ${PROJECT_SOURCE_DIR}/Components/Pump/HydraulicPump.cpp
+        ${PROJECT_SOURCE_DIR}/Components/Math/K_HP.cpp
 
         ${PROJECT_SOURCE_DIR}/FirstPrinciple/DeltaTorque2omega.cpp
         )
