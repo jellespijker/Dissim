@@ -10,3 +10,4 @@
 #include "SystemBlock.h"
 #include "AlgabraicLoop.h"
 #include "Abs.h"
+#include "Hyberbolic.h"

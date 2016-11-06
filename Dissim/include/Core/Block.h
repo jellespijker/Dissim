@@ -39,8 +39,8 @@ public:
     Block(std::string name);
 	virtual ~Block();
 
-    void push_back(DissimType::Dissim_ptr dissimVar, int operation);
-    void push_back(int operation);
+    virtual void push_back(DissimType::Dissim_ptr dissimVar, int operation);
+    virtual void push_back(int operation);
     virtual void push_back(Block_ptr);
 
     void RescaleInputsMatrix(int cols, int rows);
