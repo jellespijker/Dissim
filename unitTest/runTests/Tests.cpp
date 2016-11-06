@@ -33,6 +33,21 @@ TEST(BasicOperations, MultiplicationAndDivision) {
   ASSERT_EQ(b.OutputPort->Value(0, 0), 2);
 }
 
+TEST(BasicOperations, Abs) {
+  using namespace dissim;
+  Abs a;
+
+  DissimType::Dissim_ptr const_neg1(new DissimType);
+  const_neg1->Value << -1;
+  const_neg1->Description = "";
+  const_neg1->Symbol = "const_1";
+  const_neg1->Dimension = "-";
+
+  a.InputPorts.push_back(const_neg1);
+  a.Run();
+  ASSERT_EQ(a.OutputPort->Value(0,0), 1);
+}
+
 TEST(BasicOperations, Integrate) {
   using namespace dissim;
   Simulation s;

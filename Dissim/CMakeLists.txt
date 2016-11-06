@@ -20,6 +20,7 @@ set(DISSIM_LIB_SRC 	 ${PROJECT_INCLUDE_DIR}/dissim.h
         ${PROJECT_INCLUDE_DIR}/Core/Chronos.h
         ${PROJECT_INCLUDE_DIR}/Core/SystemBlock.h
         ${PROJECT_INCLUDE_DIR}/Core/AlgabraicLoop.h
+        ${PROJECT_INCLUDE_DIR}/Core/Abs.h
 
         ${PROJECT_INCLUDE_DIR}/Math/Math.h
         ${PROJECT_INCLUDE_DIR}/Math/Common.h
@@ -42,6 +43,7 @@ set(DISSIM_LIB_SRC 	 ${PROJECT_INCLUDE_DIR}/dissim.h
         ${PROJECT_SOURCE_DIR}/Core/Chronos.cpp
         ${PROJECT_SOURCE_DIR}/Core/SystemBlock.cpp
         ${PROJECT_SOURCE_DIR}/Core/AlgabraicLoop.cpp
+        ${PROJECT_SOURCE_DIR}/Core/Abs.cpp
 
         ${PROJECT_SOURCE_DIR}/Math/Common.cpp
 
