@@ -41,7 +41,7 @@ void Block::push_back(int operation){
     push_back(I, operation);
 }
 
-void Block::push_back(Block_ptr) {
+void Block::push_back(Block_ptr blck) {
 
 }
 
@@ -100,6 +100,10 @@ void Block::setTime(boost::shared_ptr<Chronos> time) {
     std::for_each(SystemBlocks.begin(), SystemBlocks.end(), [&](Block_ptr &S){
        S->setTime(time);
     });
+}
+void Block::push_back(DissimType::Dissim_ptr dissimVar) {
+  InputPorts.push_back(dissimVar);
+  Operations.push_back(0);
 }
 
 }

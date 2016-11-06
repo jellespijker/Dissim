@@ -48,6 +48,19 @@ TEST(BasicOperations, Abs) {
   ASSERT_EQ(a.OutputPort->Value(0,0), 1);
 }
 
+TEST(BasicOperations, tanh) {
+  using  namespace dissim;
+  Block::Block_ptr h(new Hyberbolic);
+
+  DissimType::Dissim_ptr constValue(new DissimType);
+  constValue->Value << 0.693147;
+
+  h->push_back(constValue, Hyberbolic::tanh);
+  h->Run();
+  ASSERT_NEAR(h->OutputPort->Value(0,0), 0.6, 0.05);
+
+}
+
 TEST(BasicOperations, Integrate) {
   using namespace dissim;
   Simulation s;
@@ -167,4 +180,23 @@ TEST(Math, K_HP) {
 
   s.Run();
   ASSERT_NEAR(k_hp->OutputPort->Value(0,0), 50.0501, 0.05);
+}
+
+TEST(Math, tau_friction) {
+  using namespace dissim::Components;
+  using namespace dissim;
+
+  Simulation s;
+  Block::Block_ptr t(new Components::tau_friction);
+  s.SystemBlocks.push_back(t);
+
+  t->getInputPort("tau_0")->Value << 1000;
+  t->getInputPort("K_TP")->Value << 0.9;
+  t->getInputPort("omega_thres")->Value << 5;
+  t->getInputPort("DeltaP")->Value << 2;
+  t->getInputPort("omega")->Value << 3;
+
+  s.Run();
+  ASSERT_NEAR(t->OutputPort->Value(0,0), 985.445, 0.05);
+
 }
