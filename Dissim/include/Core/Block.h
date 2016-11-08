@@ -58,6 +58,8 @@ public:
   IO_t OutputPorts;
   DissimType::Dissim_ptr OutputPort;
   std::vector<int> Operations;
+protected:
+  void reRouteInput(Block_ptr blck);
 };
 
 } /* namespace dissim */

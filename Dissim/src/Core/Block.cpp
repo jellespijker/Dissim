@@ -7,6 +7,8 @@
 
 #include "Core/Block.h"
 
+#include <algorithm>
+
 namespace dissim {
 
 Block::Block() {
@@ -104,6 +106,14 @@ void Block::setTime(boost::shared_ptr<Chronos> time) {
 void Block::push_back(DissimType::Dissim_ptr dissimVar) {
   InputPorts.push_back(dissimVar);
   Operations.push_back(0);
+}
+void Block::reRouteInput(Block::Block_ptr blck) {
+  std::for_each(blck->InputPorts.begin(), blck->InputPorts.end(), [&](auto bio){
+    auto IO = std::find(InputPorts.begin(), InputPorts.end(), bio);
+    if (IO != blck->InputPorts.end()) {
+      InputPorts.push_back(bio);
+    }
+  });
 }
 
 }
