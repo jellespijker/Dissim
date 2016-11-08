@@ -3,14 +3,15 @@
 #include "../../Core/SystemBlock.h"
 
 namespace dissim {
-    namespace Components {
+namespace Components {
 
-        class K_HP : public SystemBlock {
-        public:
-            K_HP();
-            virtual ~K_HP();
-        };
-
-
-    }
+class K_HP : public SystemBlock {
+public:
+  K_HP(bool inverted = false);
+  K_HP(std::string name);
+  virtual ~K_HP();
+private:
+  bool inverted_;
+};
+}
 }

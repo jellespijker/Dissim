@@ -3,7 +3,9 @@
 namespace dissim {
 namespace Components {
 
-K_HP::K_HP() {
+K_HP::K_HP(bool inverted)
+    : SystemBlock(),
+      inverted_(inverted) {
   InputPorts.push_back(DissimType::Dissim_ptr(new DissimType(
       "v_nom", "PA * s", "the Nominal kinematic viscosity parameter. This is "
                          "the kinematic viscosity at which the nominal "
@@ -54,13 +56,20 @@ K_HP::K_HP() {
   SystemBlocks.push_back(b);
 
   Block_ptr c(new BasicOperationBlock("c"));
-  c->push_back(const_1, BasicOperationBlock::Multplication);
-  c->push_back(getInputPort("eta_V_nom"), BasicOperationBlock::Division);
-  SystemBlocks.push_back(c);
+  if (inverted_) {
+    c->push_back(const_1, BasicOperationBlock::Multplication);
+    c->push_back(getInputPort("eta_V_nom"), BasicOperationBlock::Division);
+    SystemBlocks.push_back(c);
+  }
 
   Block_ptr d(new BasicOperationBlock("d"));
-  d->push_back(c->OutputPort, BasicOperationBlock::Addition);
-  d->push_back(const_1, BasicOperationBlock::Subtraction);
+  if (inverted_) {
+    d->push_back(c->OutputPort, BasicOperationBlock::Addition);
+    d->push_back(const_1, BasicOperationBlock::Subtraction);
+  } else {
+    d->push_back(const_1, BasicOperationBlock::Addition);
+    d->push_back(getInputPort("eta_V_nom"), BasicOperationBlock::Subtraction);
+  }
   SystemBlocks.push_back(d);
 
   Block_ptr e(new BasicOperationBlock("e"));
@@ -78,5 +87,11 @@ K_HP::K_HP() {
 }
 
 K_HP::~K_HP() {}
+
+K_HP::K_HP(std::string name) : SystemBlock(name) {
+  this->Name = name;
+  Block();
+  K_HP();
+}
 }
 }
