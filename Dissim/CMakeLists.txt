@@ -20,15 +20,18 @@ set(DISSIM_LIB_SRC 	 ${PROJECT_INCLUDE_DIR}/dissim.h
         ${PROJECT_INCLUDE_DIR}/Core/Chronos.h
         ${PROJECT_INCLUDE_DIR}/Core/SystemBlock.h
         ${PROJECT_INCLUDE_DIR}/Core/AlgabraicLoop.h
+        ${PROJECT_INCLUDE_DIR}/Core/Abs.h
+        ${PROJECT_INCLUDE_DIR}/Core/Hyberbolic.h
 
         ${PROJECT_INCLUDE_DIR}/Math/Math.h
         ${PROJECT_INCLUDE_DIR}/Math/Common.h
-        ${PROJECT_INCLUDE_DIR}/Math/DissimConstants.h
 
         ${PROJECT_INCLUDE_DIR}/Components/Components.h
         ${PROJECT_INCLUDE_DIR}/Components/Motor/ElectroMotor.h
         ${PROJECT_INCLUDE_DIR}/Components/Motor/HydraulicMotor.h
         ${PROJECT_INCLUDE_DIR}/Components/Pump/HydraulicPump.h
+        ${PROJECT_INCLUDE_DIR}/Components/Math/K_HP.h
+        ${PROJECT_INCLUDE_DIR}/Components/Math/tau_friction.h
 
         ${PROJECT_INCLUDE_DIR}/FirstPrinciple/FirstPrinciple.h
         ${PROJECT_INCLUDE_DIR}/FirstPrinciple/DeltaTorque2omega.h
@@ -42,12 +45,16 @@ set(DISSIM_LIB_SRC 	 ${PROJECT_INCLUDE_DIR}/dissim.h
         ${PROJECT_SOURCE_DIR}/Core/Chronos.cpp
         ${PROJECT_SOURCE_DIR}/Core/SystemBlock.cpp
         ${PROJECT_SOURCE_DIR}/Core/AlgabraicLoop.cpp
+        ${PROJECT_SOURCE_DIR}/Core/Abs.cpp
+        ${PROJECT_SOURCE_DIR}/Core/Hyberbolic.cpp
 
         ${PROJECT_SOURCE_DIR}/Math/Common.cpp
 
         ${PROJECT_SOURCE_DIR}/Components/Motor/ElectroMotor.cpp
         ${PROJECT_SOURCE_DIR}/Components/Motor/HydraulicMotor.cpp
         ${PROJECT_SOURCE_DIR}/Components/Pump/HydraulicPump.cpp
+        ${PROJECT_SOURCE_DIR}/Components/Math/K_HP.cpp
+        ${PROJECT_SOURCE_DIR}/Components/Math/tau_friction.cpp
 
         ${PROJECT_SOURCE_DIR}/FirstPrinciple/DeltaTorque2omega.cpp
         )

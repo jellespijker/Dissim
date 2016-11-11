@@ -1,8 +1,8 @@
 #pragma once
 
-#include "Core/BasicOperationBlock.h"
-#include "Core/Integrator.h"
-#include "Core/SystemBlock.h"
+#include "../Core/BasicOperationBlock.h"
+#include "../Core/Integrator.h"
+#include "../Core/SystemBlock.h"
 
 namespace dissim {
 namespace FirstPrinciple {

@@ -1,0 +1,15 @@
+V1.0.0 Finish HydraulicComponents
+- Hydraulicpump added
+- Rewrite of HydraulicMotor
+- reroute sub-systemblock inputs
+- mplement inverted eta
+- tau friction added
+- Hyperbolic block added
+- Added Absolute basic block
+- Hagen-Poiseuille coefficient for laminar pipe flows added
+- Finish unitTest
+- FirstPrinciple Tests added
+- BasicOperations Test added
+- Added first Test
+- Added submodule google test
+- Initial commit. raw copy off the old dissim project. To rewrite for use in the ohCaptain project

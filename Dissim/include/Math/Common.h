@@ -1,6 +1,6 @@
 #pragma once
 
-#include "Core/DissimType.h"
+#include "../Core/DissimType.h"
 
 namespace dissim {
 namespace Math {

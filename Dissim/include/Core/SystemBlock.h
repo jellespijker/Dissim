@@ -1,7 +1,7 @@
 #pragma once
 
-#include "Core/BasicOperationBlock.h"
-#include "Core/Block.h"
+#include "BasicOperationBlock.h"
+#include "Block.h"
 
 namespace dissim {
 

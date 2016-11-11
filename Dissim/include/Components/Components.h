@@ -1,5 +1,7 @@
 #pragma once
 
-#include "Components/Motor/ElectroMotor.h"
-#include "Components/Motor/HydraulicMotor.h"
-#include "Components/Pump/HydraulicPump.h"
+#include "Motor/ElectroMotor.h"
+#include "Motor/HydraulicMotor.h"
+#include "Pump/HydraulicPump.h"
+#include "Math/K_HP.h"
+#include "Math/tau_friction.h"
