@@ -5,10 +5,10 @@
 namespace dissim {
 namespace Components {
 
-class HydraulicMotor : public SystemBlock {
+class tau_friction : public SystemBlock {
 public:
-    HydraulicMotor();
-    virtual ~HydraulicMotor();
+  tau_friction();
+  virtual ~tau_friction();
 };
 
 
