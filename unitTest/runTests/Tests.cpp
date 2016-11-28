@@ -259,3 +259,35 @@ TEST(Components, HydraulicPump) {
   ASSERT_NEAR(h->getOutputPort("DeltaP")->Value(0,0), -10.2924, 0.05 );
   ASSERT_NEAR(h->getOutputPort("tau")->Value(0,0), -4080.51, 10);
 }
+
+TEST(Solver, Derivative) {
+  using namespace dissim;
+
+  Block::Block_ptr b(new BasicOperationBlock);
+  b->push_back(BasicOperationBlock::Addition);
+  b->push_back(BasicOperationBlock::Subtraction);
+  b->RescaleInputsMatrix(1, 1);
+  b->InputPorts[0]->Value << 1;
+  b->InputPorts[1]->Value << 2;
+
+  Block::Block_ptr c(new BasicOperationBlock);
+  c->push_back(BasicOperationBlock::Multplication);
+  c->push_back(BasicOperationBlock::Multplication);
+  c->RescaleInputsMatrix(1, 1);
+  c->InputPorts[0] = b->OutputPorts[0];
+  c->InputPorts[1]->Value << 3;
+
+  Block::Block_ptr a(new SystemBlock);
+  a->SystemBlocks.push_back(b);
+  a->SystemBlocks.push_back(c);
+  a->InputPorts.push_back(b->InputPorts[0]);
+  a->InputPorts.push_back(b->InputPorts[1]);
+  a->InputPorts.push_back(c->InputPorts[1]);
+  a->OutputPorts[0] = c->OutputPorts[0];
+  Solver::Solver_ptr s( new Newton());
+  a->setSolver(s);
+  Block::IO_t inputs = a->InputPorts;
+  DissimType::Dissim_ptr outputs = s->diff(a, a->InputPorts[0], 0.1);
+  ASSERT_NEAR(outputs->Value(0,0), 3, 0.0001);
+
+}

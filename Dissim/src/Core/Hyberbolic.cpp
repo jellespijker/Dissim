@@ -43,8 +43,10 @@ dissim::DissimType::Dissim_ptr Hyberbolic::Run() {
     }
     break;
   }
-  DissimType::Value_ptr v = boost::make_shared<DissimType::Value_t>( OutputPort->Value );
-  History.push_back(v);
+  if (saveHistory_) {
+    DissimType::Value_ptr v = boost::make_shared<DissimType::Value_t>(OutputPort->Value);
+    History.push_back(v);
+  }
   return OutputPort;
 }
 void Hyberbolic::push_back(DissimType::Dissim_ptr dissimVar, int operation) {

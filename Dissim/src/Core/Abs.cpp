@@ -14,11 +14,13 @@ Abs::Abs(std::string name) {
 DissimType::Dissim_ptr Abs::Run() {
   for (int i = 0; i < InputPorts[0]->Value.rows(); i++) {
     for (int j = 0; j < InputPorts[0]->Value.cols(); j++) {
-      OutputPort->Value(i,j) = std::abs(InputPorts[0]->Value(i,j));
+      OutputPort->Value(i, j) = std::abs(InputPorts[0]->Value(i, j));
     }
   }
-  DissimType::Value_ptr v = boost::make_shared<DissimType::Value_t>( OutputPort->Value );
-  History.push_back(v);
+  if (saveHistory_) {
+    DissimType::Value_ptr v = boost::make_shared<DissimType::Value_t>(OutputPort->Value);
+    History.push_back(v);
+  }
   return OutputPort;
 }
 

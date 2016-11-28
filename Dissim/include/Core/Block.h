@@ -9,6 +9,7 @@
 #include <vector>
 
 #include <boost/make_shared.hpp>
+#include <boost/enable_shared_from_this.hpp>
 
 #include "../Math/Math.h"
 #include "BlockException.h"
@@ -17,7 +18,9 @@
 
 namespace dissim {
 
-class Block {
+class Solver;
+
+class Block : public boost::enable_shared_from_this<Block> {
 public:
   typedef std::vector<DissimType::Dissim_ptr> IO_t;
   typedef std::pair<DissimType::Value_t, DissimType::Value_t> Range_t;
@@ -58,8 +61,17 @@ public:
   IO_t OutputPorts;
   DissimType::Dissim_ptr OutputPort;
   std::vector<int> Operations;
+
+  void setSolver(boost::shared_ptr<dissim::Solver>solver);
+  boost::shared_ptr<dissim::Solver> getSolver();
+
+  void setSaveHistory(bool saveHistory);
+  bool getSaveHistory();
 protected:
   void reRouteInput(Block_ptr blck);
+  boost::shared_ptr<dissim::Solver> solver_;
+  bool saveHistory_;
+
 };
 
 } /* namespace dissim */

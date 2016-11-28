@@ -13,9 +13,9 @@ Integrator::Integrator() {
 
 }
 
-Integrator::Integrator( std::string name ) {
-    this->Name = name;
-    Block();
+Integrator::Integrator(std::string name) {
+  this->Name = name;
+  Block();
 }
 
 Integrator::~Integrator() {
@@ -23,10 +23,12 @@ Integrator::~Integrator() {
 }
 
 DissimType::Dissim_ptr Integrator::Run() {
-    OutputPort->Value = (Time->Delta_t * InputPorts[0]->Value) + *History[History.size() - 1];
+  OutputPort->Value = (Time->Delta_t * InputPorts[0]->Value) + *History[History.size() - 1];
+  if (saveHistory_) {
     DissimType::Value_ptr v = boost::make_shared<DissimType::Value_t>(OutputPort->Value);
-    History.push_back( v );
-    return OutputPort;
+    History.push_back(v);
+  }
+  return OutputPort;
 }
 
 }  // namespace dissim

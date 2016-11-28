@@ -11,3 +11,4 @@
 #include "AlgabraicLoop.h"
 #include "Abs.h"
 #include "Hyberbolic.h"
+#include "Solver.h"
