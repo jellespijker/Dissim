@@ -324,3 +324,37 @@ TEST(Solver, Newton) {
   s->Solve(a, a->InputPorts[0]);
   ASSERT_NEAR(a->InputPorts[0]->Value(0,0), 2, 0.0001);
 }
+
+TEST(Simulation, Export_to_CSV) {
+  using namespace dissim::Components;
+  using namespace dissim;
+
+  Simulation s;
+  Block::Block_ptr h(new Components::HydraulicMotor);
+  s.SystemBlocks.push_back(h);
+
+  h->getInputPort("v_nom")->Value << 300;
+  h->getInputPort("rho")->Value << 700;
+  h->getInputPort("v")->Value << 290;
+  h->getInputPort("rho_nom")->Value << 710;
+  h->getInputPort("omega_nom")->Value << 5;
+  h->getInputPort("D_max")->Value << 300;
+  h->getInputPort("DeltaP_nom")->Value << 2;
+  h->getInputPort("eta_V_nom")->Value << 0.9;
+  h->getInputPort("tau_0")->Value << 1000;
+  h->getInputPort("K_TP")->Value << 0.9;
+  h->getInputPort("omega_thres")->Value << 5;
+  h->getInputPort("DeltaP")->Value << 2;
+  h->getInputPort("omega")->Value << 3;
+  h->getInputPort("v_f")->Value << 3;
+  h->getInputPort("A_p")->Value << (3.1415/4) * std::pow(0.15d, 2);
+  h->getInputPort("D")->Value << 300;
+  h->init();
+
+  s.getExport()->push_back(h->getInputPort("v_nom"));
+  s.getExport()->push_back(h->OutputPort);
+  s.getExport()->setDelta_t(0.2);
+
+  s.Run(1);
+  s.getExport()->write("test.dat");
+}

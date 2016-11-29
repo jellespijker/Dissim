@@ -9,6 +9,7 @@
 
 #include "Chronos.h"
 #include "Block.h"
+#include "Export.h"
 
 #include <boost/shared_ptr.hpp>
 
@@ -19,13 +20,18 @@ namespace dissim {
 class Simulation {
 public:
 
-    boost::shared_ptr<Chronos> Time;
-    Block::SystemBlockVector_t SystemBlocks;
+  Chronos::Chronos_Ptr Time;
+  Block::SystemBlockVector_t SystemBlocks;
 
-	Simulation();
-	virtual ~Simulation();
+  Simulation();
+  virtual ~Simulation();
 
-    void Run(double endtime = 0.02);
+  void Run(double endtime = 0.02);
+
+  Export::Export_Ptr &getExport();
+  void setExport(const Export::Export_Ptr &exporter);
+private:
+  Export::Export_Ptr export_;
 
 };
 
