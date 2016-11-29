@@ -136,6 +136,9 @@ void Block::setSaveHistory(bool saveHistory) {
 bool Block::getSaveHistory() {
   return saveHistory_;
 }
+void Block::init() {
+  OutputPort = OutputPorts[0];
+}
 
 }
 

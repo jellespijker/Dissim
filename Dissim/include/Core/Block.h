@@ -67,6 +67,7 @@ public:
 
   void setSaveHistory(bool saveHistory);
   bool getSaveHistory();
+  void init();
 protected:
   void reRouteInput(Block_ptr blck);
   boost::shared_ptr<dissim::Solver> solver_;

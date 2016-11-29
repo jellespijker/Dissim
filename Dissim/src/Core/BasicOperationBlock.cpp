@@ -13,9 +13,9 @@ BasicOperationBlock::BasicOperationBlock() {
 
 }
 
-BasicOperationBlock::BasicOperationBlock(std::string name) {
+BasicOperationBlock::BasicOperationBlock(std::string name)
+    : Block() {
   this->Name = name;
-  Block();
 }
 
 BasicOperationBlock::~BasicOperationBlock() {
