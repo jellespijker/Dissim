@@ -24,6 +24,7 @@ set(DISSIM_LIB_SRC 	 ${PROJECT_INCLUDE_DIR}/dissim.h
         ${PROJECT_INCLUDE_DIR}/Core/Hyberbolic.h
         ${PROJECT_INCLUDE_DIR}/Core/Solver.h
         ${PROJECT_INCLUDE_DIR}/Core/Export.h
+        ${PROJECT_INCLUDE_DIR}/Core/Signal.h
 
         ${PROJECT_INCLUDE_DIR}/Math/Math.h
         ${PROJECT_INCLUDE_DIR}/Math/Common.h
@@ -51,6 +52,7 @@ set(DISSIM_LIB_SRC 	 ${PROJECT_INCLUDE_DIR}/dissim.h
         ${PROJECT_SOURCE_DIR}/Core/Hyberbolic.cpp
         ${PROJECT_SOURCE_DIR}/Core/Solver.cpp
         ${PROJECT_SOURCE_DIR}/Core/Export.cpp
+        ${PROJECT_SOURCE_DIR}/Core/Signal.cpp
 
         ${PROJECT_SOURCE_DIR}/Math/Common.cpp
 
